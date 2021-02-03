@@ -19,7 +19,7 @@ def print_obj(obj):
 
 class DB_Manage():
     def get_minute_record():
-        conn = pymysql.connect(host="159.138.110.208", user="root", passwd="MSbolang667496", db="huice", charset="utf8")
+        conn = pymysql.connect(host="127.0.0.1", user="root", passwd="123456", db="huice", charset="utf8")
         sql_query = "SELECT * FROM minute_record WHERE datatime  BETWEEN '2020-11-25 00:00:00' AND '2020-12-01 00:00:59' ORDER BY time_stamp ASC"
         dataframe = pd.read_sql(sql_query, con=conn)
         # print(dataframe)
@@ -27,7 +27,7 @@ class DB_Manage():
         return dataframe
     #######################################reset db##################################
     def init_table_trend_index():
-        conn = pymysql.connect(host="159.138.110.208", user="root", passwd="MSbolang667496", db="huice", charset="utf8")
+        conn = pymysql.connect(host="127.0.0.1", user="root", passwd="123456789", db="huice", charset="utf8")
         sql_query = "UPDATE trend_index set indicator=5,price=0,then_time='1995-01-01 00:00:00',next_update_time_stamp=0 where 1"
         cursor = conn.cursor()
         cursor.execute(sql_query)
@@ -35,7 +35,7 @@ class DB_Manage():
         conn.close()
 
     def init_table_record():
-        conn = pymysql.connect(host="159.138.110.208", user="root", passwd="MSbolang667496", db="huice", charset="utf8")
+        conn = pymysql.connect(host="127.0.0.1", user="root", passwd="123456789", db="huice", charset="utf8")
         cursor = conn.cursor()
         cursor.execute("TRUNCATE TABLE record;")
         conn.commit()
@@ -43,7 +43,7 @@ class DB_Manage():
 
     def init_table_warrior():
         print("====init_table_warrior=====")
-        conn = pymysql.connect(host="159.138.110.208", user="root", passwd="MSbolang667496", db="huice", charset="utf8")
+        conn = pymysql.connect(host="127.0.0.1", user="root", passwd="123456789", db="huice", charset="utf8")
         cursor = conn.cursor()
         cursor.execute("UPDATE warrior SET profit=0, liquidation_value=0, liquidation_value=0, status=0, buy_quantity=0 WHERE 1;")
         conn.commit()
@@ -51,7 +51,7 @@ class DB_Manage():
 
     #######################################reset db end##############################
     def updataTrendIndex(data):
-        conn = pymysql.connect(host="159.138.110.208", user="root", passwd="MSbolang667496", db="huice", charset="utf8")
+        conn = pymysql.connect(host="127.0.0.1", user="root", passwd="123456789", db="huice", charset="utf8")
         cursor = conn.cursor()
 
         sql_query = "UPDATE trend_index SET indicator=0 WHERE indicator<0"
